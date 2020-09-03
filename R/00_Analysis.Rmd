@@ -1,0 +1,99 @@
+---
+title: "Name of Analysis"
+subtitle: "Data Analysis Group"
+author: "Your Name"
+date: "The Date"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+params:
+  audience:
+    label: Audience
+    value: Stakeholder
+    input: radio
+    choices:
+    - Executive Summary
+    - Stakeholder
+    - All Content + Code
+---
+_report view: `r params$audience` _
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = (params$audience == "All Content + Code"))
+
+```
+
+```{r packages}
+library(blastula)
+library(ggplot2)
+library(palmerpenguins)
+```
+
+
+<!-- The Executive Summary section below will only appear if Audience is Executive Summary -->
+```{r exec_summary, child='01_exec_summary.rmd'}
+```
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r background, child=if (params$audience != "Executive Summary") '02_background.rmd'}
+```
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r data_sources, child=if (params$audience != "Executive Summary") '03_data_sources.rmd'}
+```
+
+
+# Assumptions
+List assumptions here to be included in every report, regardless of audience. 
+
+1. Assumption 1
+1. Assumption 2
+1. Assumption 3
+
+
+# Analysis
+We calculate here.  For `All Content + Code` audience, code is displayed as well. 
+
+Here is a summary of the data.
+```{r data_processing}
+# import, tidy, transform data
+reactable::reactable(penguins, 
+                     filterable = TRUE, defaultPageSize = 7)
+
+    
+    
+    
+
+```
+
+
+And a plot.
+```{r calculations}
+# And let's plot something
+penguin_plot <- ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"),
+                    guide = FALSE) +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+
+penguin_plot
+```
+
+# Results
+Results summary goes here. 
+
+# Conclusions
+Conclusions go here. 
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r references, child=if (params$audience != "Executive Summary") '04_references.rmd'}
+```
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r appendices, child=if (params$audience != "Executive Summary") '05_appendices.rmd'}
+```
+

@@ -1,0 +1,7 @@
+# Background
+This section describes:
+
+* the history of the problem
+* the ask
+* stakeholders
+* etc. 
