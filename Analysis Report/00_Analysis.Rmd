@@ -1,13 +1,13 @@
 ---
 title: "Name of Analysis"
-subtitle: "Data Analysis Group"
 author: "Your Name"
 date: "The Date"
 output:
   html_document:
-    toc: true
-    toc_float: true
+    toc: yes
+    toc_float: yes
     theme: flatly
+subtitle: Data Analysis Group
 params:
   audience:
     label: Audience
@@ -17,6 +17,12 @@ params:
     - Executive Summary
     - Stakeholder
     - All Content + Code
+resource_files:
+- 01_exec_summary.rmd
+- 02_background.rmd
+- 03_data_sources.rmd
+- 04_references.rmd
+- 05_appendices.rmd
 ---
 _report view: `r params$audience` _
 

@@ -1,0 +1,12 @@
+name: shinypenguins
+title: ShinyPenguins
+username: katie
+account: katie
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 7318
+bundleId: 40250
+url: https://colorado.rstudio.com/rsc/shinypenguins/
+when: 1599758614.07714
+asMultiple: FALSE
+asStatic: FALSE

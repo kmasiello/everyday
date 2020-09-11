@@ -1,0 +1,50 @@
+---
+title: "data validation"
+author: "Katie Masiello"
+date: "9/9/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(pointblank)
+library(glue)
+library(palmerpenguins) 
+library(reactable)
+```
+
+```{r}
+agent <- 
+penguins %>%
+  create_agent() %>%
+  col_vals_in_set(vars(island), set = c("Biscoe", "Gilligan", "Dream")) %>%
+  col_vals_in_set(vars(sex), set = c("male", "female", "NA")) %>%
+  col_vals_lt(vars(body_mass_g), value = 6000) %>%
+  col_vals_between(vars(year), left = 2008, right = 2009) %>%
+  interrogate()
+agent
+```
+
+```{r}
+#get extracts as dataframes
+extracts <- get_data_extracts(agent) 
+# extracts_b <- setNames(Map(function(x, y) setNames(data.frame(x), y), 
+#                     extracts,names(extracts)), paste0("df", 1:length(extracts)))
+# 
+# list2env(extracts_b, .GlobalEnv)
+extracts
+
+```
+
+# Log it
+Very simplistic log of date and data sent:
+```{r}
+
+glue("Report run {blastula::add_readable_time()} 
+      {nrow(penguins)} penguin measurements taken")
+```

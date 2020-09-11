@@ -1,0 +1,12 @@
+name: penguin_data_validation_pointblank_etl
+title: Penguin data validation pointblank ETL
+username: katie
+account: katie
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 7328
+bundleId: 40240
+url: https://colorado.rstudio.com/rsc/content/7328/
+when: 1599718526.98489
+asMultiple: FALSE
+asStatic: FALSE

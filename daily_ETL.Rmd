@@ -1,0 +1,84 @@
+---
+title: "Email Compose"
+author: "Katie Masiello"
+date: "8/25/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(blastula)
+library(ggplot2)
+library(glue)
+library(palmerpenguins) 
+```
+
+Let's create some interesting data that we want to email.
+```{r}
+head(penguins)
+
+# And let's plot something
+penguin_plot <- ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"),
+                    guide = FALSE) +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+
+penguin_plot
+```
+
+Great data.  Now let's make an email with Blastula.
+
+We can jazz it up with our plot and an attachment:
+```{r}
+# Let's add some data
+plot_email <- blastula::add_ggplot(penguin_plot) # this is a helper function to make plots images for emailing
+
+readr::write_csv(penguins, "penguin_measurements.csv")
+```
+
+
+Now lets make customized emails that send out under certain conditions  
+```{r}
+
+days_remaining <- as.numeric(as.Date("2020-12-31")-Sys.Date()) #hypothetical timeline to end of penguin project
+percent_remaining <- round(days_remaining/365*100)
+
+# Let's send a daily status email but every two weeks prior to the end of the project, send a larger summary
+
+if(days_remaining%%14 != 0){ #if it's not a multiple of 14 days prior to end date
+  render_connect_email("penguin-email.Rmd") %>% 
+  attach_connect_email(subject = paste(days_remaining,
+                    "days remain in the project and",
+                    nrow(penguins), "penguin measurements are complete"), 
+                    attachments = "penguin_measurements.csv")
+} else {
+  render_connect_email("penguin-email-2wk.Rmd") %>% 
+    attach_connect_email(subject = paste0("Bi-weekly summary: Project timeline ", 
+                                         percent_remaining,
+                                         "% complete, ",
+                                         nrow(penguins), 
+                                         " penguin measurements complete"), 
+                         attachments = "penguin_measurements.csv")
+  
+}
+
+
+```
+
+
+# Log it
+Very simplistic log of date and data sent:
+```{r}
+
+glue("Report run {add_readable_time()} 
+      {days_remaining} days remaining 
+      {nrow(penguins)} measurements taken")
+```

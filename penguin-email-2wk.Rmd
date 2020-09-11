@@ -1,0 +1,39 @@
+---
+title: "Email Document"
+output: blastula::blastula_email
+---
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+```{r include=FALSE}
+summary_measured <- penguins %>% group_by(species) %>%  tally()
+```
+
+
+Good morning! 
+
+Since the last status report, `r nrow(penguins)-40` additional penguins have been measured.  See the full details at the project dashboard here: [https://colorado.rstudio.com/rsc/shinypenguins/](https://colorado.rstudio.com/rsc/shinypenguins/)
+
+```{r echo=FALSE}
+knitr::kable(summary_measured, format = "html")
+```
+
+Here's how the data looks thus far:
+```{r echo=FALSE, warning=FALSE}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species,
+                 shape = species),
+             size = 2) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+
+Things are going swimmingly here.  There are `r days_remaining` days remaining in the project with `r nrow(penguins)` measurements complete.  
+
+
+Regards,
+
+Katie
+

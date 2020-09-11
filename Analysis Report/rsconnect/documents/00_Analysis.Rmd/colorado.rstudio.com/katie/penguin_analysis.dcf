@@ -1,0 +1,13 @@
+name: penguin_analysis
+title: Penguin Analysis
+username: katie
+account: katie
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 7317
+bundleId: 40155
+url: https://colorado.rstudio.com/rsc/content/7317/
+when: 1599108679.09405
+asMultiple: FALSE
+asStatic: FALSE
+additionalFiles: 01_exec_summary.rmd|02_background.rmd|03_data_sources.rmd|04_references.rmd|05_appendices.rmd

@@ -1,0 +1,12 @@
+name: daily_etl_penguins
+title: daily_ETL_penguins
+username: katie
+account: katie
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 7319
+bundleId: 40251
+url: https://colorado.rstudio.com/rsc/content/7319/
+when: 1599759545.35147
+asMultiple: TRUE
+asStatic: FALSE
