@@ -1,5 +1,5 @@
 ---
-title: "Email Compose"
+title: "Daily ETL and custom email summary"
 author: "Katie Masiello"
 date: "8/25/2020"
 output: html_document
@@ -48,7 +48,7 @@ readr::write_csv(penguins, "penguin_measurements.csv")
 Now lets make customized emails that send out under certain conditions  
 ```{r}
 
-days_remaining <- as.numeric(as.Date("2020-12-31")-Sys.Date()) #hypothetical timeline to end of penguin project
+days_remaining <- as.numeric(as.Date("2021-12-31")-Sys.Date()) #hypothetical timeline to end of penguin project
 percent_remaining <- round(days_remaining/365*100)
 
 # Let's send a daily status email but every two weeks prior to the end of the project, send a larger summary
