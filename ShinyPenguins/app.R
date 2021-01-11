@@ -16,7 +16,7 @@ library(palmerpenguins)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Penguin Measurements"),
+    titlePanel("Penguin Measurements - Development"),
 
     sidebarLayout(
         sidebarPanel(radioButtons(inputId = "species", 

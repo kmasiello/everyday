@@ -2005,7 +2005,7 @@
   },
   "files": {
     "app.R": {
-      "checksum": "ec10c44e9edd271113854e046e80239a"
+      "checksum": "d2e78057cdd2f1132f710e4af64c59b4"
     },
     "packrat/desc/assertthat": {
       "checksum": "c5a75fa45798def667d56a2f368ae413"
@@ -2201,6 +2201,9 @@
     },
     "packrat/packrat.lock": {
       "checksum": "392f7de6109d5aa93a0b442894ccfcd1"
+    },
+    "penguin_measurements.csv": {
+      "checksum": "a06a0210251465a86fb970018292304d"
     }
   },
   "users": null

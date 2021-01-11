@@ -14,7 +14,7 @@ summary_measured <- penguins %>% group_by(species) %>%  tally()
 
 Good morning! 
 
-Since the last status report, `r nrow(penguins)-40` additional penguins have been measured.  See the full details at the project dashboard here: [https://colorado.rstudio.com/rsc/shinypenguins/](https://colorado.rstudio.com/rsc/shinypenguins/)
+Since the last status report on `r Sys.Date() - 7`, `r nrow(penguins)-40` additional penguins have been measured.  See the full details at the project dashboard here: [https://colorado.rstudio.com/rsc/shinypenguins/](https://colorado.rstudio.com/rsc/shinypenguins/)
 
 ```{r echo=FALSE}
 knitr::kable(summary_measured, format = "html")

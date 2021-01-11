@@ -5,8 +5,8 @@ account: katie
 server: colorado.rstudio.com
 hostUrl: https://colorado.rstudio.com/rsc/__api__
 appId: 7318
-bundleId: 40250
+bundleId: 40713
 url: https://colorado.rstudio.com/rsc/shinypenguins/
-when: 1599758614.07714
+when: 1602253383.78224
 asMultiple: FALSE
 asStatic: FALSE

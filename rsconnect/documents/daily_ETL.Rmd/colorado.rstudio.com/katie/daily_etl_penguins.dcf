@@ -5,8 +5,8 @@ account: katie
 server: colorado.rstudio.com
 hostUrl: https://colorado.rstudio.com/rsc/__api__
 appId: 7319
-bundleId: 40251
+bundleId: 42898
 url: https://colorado.rstudio.com/rsc/content/7319/
-when: 1599759545.35147
+when: 1610050875.64072
 asMultiple: TRUE
 asStatic: FALSE
