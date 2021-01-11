@@ -7,15 +7,16 @@ output: blastula::blastula_email
 library(tidyverse)
 ```
 
-Good morning! 
+Good morning!
 
-Here are the latest measurements on the penguin project.  See the full details at the project dashboard here: [https://colorado.rstudio.com/rsc/shinypenguins/](https://colorado.rstudio.com/rsc/shinypenguins/)
+Here are the latest measurements on the penguin project. See the full details at the project dashboard here: <https://colorado.rstudio.com/rsc/shinypenguins/>
 
 ```{r echo=FALSE}
 penguin_plot
 ```
 
 Here's how the data looks thus far:
+
 ```{r echo=FALSE, warning=FALSE}
 ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species,
@@ -24,12 +25,10 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
   scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
 ```
 
-
-Things are going swimmingly here.  There are `r days_remaining` days remaining in the project with `r nrow(penguins)` measurements complete.  
+Things are going swimmingly here. There are `r days_remaining` days remaining in the project with `r nrow(penguins)` measurements complete.
 
 This project is making me hungry for popsicles.
 
 Regards,
 
 Katie
-
