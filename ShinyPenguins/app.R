@@ -12,9 +12,11 @@ library(ggplot2)
 library(dplyr)
 library(palmerpenguins)
 
+# bslib::bs_theme_preview()
+
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
+    theme = bslib::bs_theme(version = 4, bootswatch = "minty"),
     # Application title
     titlePanel("Penguin Measurements - Development"),
 
