@@ -18,7 +18,7 @@ library(palmerpenguins)
 ui <- fluidPage(
     theme = bslib::bs_theme(version = 4, bootswatch = "minty"),
     # Application title
-    titlePanel("Penguin Measurements - Development"),
+    titlePanel("Penguin Measurements - Development - THIS IS A TEST"),
 
     sidebarLayout(
         sidebarPanel(radioButtons(inputId = "species", 
