@@ -1,0 +1,104 @@
+---
+title: "Penguin Analysis"
+author: ""
+date: ""
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: flatly
+subtitle: "An example of parameterized RMD for various levels of report detail"
+params:
+  audience:
+    label: Audience
+    value: All Content
+    input: radio
+    choices:
+    - Executive Summary
+    - All Content
+    - All Content + Code
+resource_files:
+- 01_exec_summary.rmd
+- 02_background.rmd
+- 03_data_sources.rmd
+- 04_references.rmd
+- 05_appendices.rmd
+---
+_report view: `r params$audience` _
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = (params$audience == "All Content + Code"))
+
+```
+
+```{r packages}
+library(blastula)
+library(ggplot2)
+library(palmerpenguins)
+```
+
+
+<!-- The Executive Summary section below will only appear if Audience is Executive Summary -->
+```{r exec_summary, child='01_exec_summary.rmd'}
+```
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r background, child=if (params$audience != "Executive Summary") '02_background.rmd'}
+```
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r data_sources, child=if (params$audience != "Executive Summary") '03_data_sources.rmd'}
+```
+
+
+# Assumptions
+List assumptions here to be included in every report, regardless of audience. 
+
+1. Assumption 1
+1. Assumption 2
+1. Assumption 3
+
+
+# Analysis
+We calculate here.  For `All Content + Code` audience, code is displayed as well. 
+
+Here is a summary of the data.
+```{r data_processing}
+# import, tidy, transform data
+reactable::reactable(penguins, 
+                     filterable = TRUE, defaultPageSize = 7)
+
+    
+    
+    
+
+```
+
+
+And a plot.
+```{r calculations}
+# And let's plot something
+penguin_plot <- ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"),
+                    guide = "none") +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+
+penguin_plot
+```
+
+# Results and Conclusions
+Adelie penguins live on three islands. Chinstrap and Gentoos are more discriminating, living on only one island.   
+
+
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r references, child=if (params$audience != "Executive Summary") '04_references.rmd'}
+```
+
+<!-- The section below will appear for all Audiences except Executive Summary -->
+```{r appendices, child=if (params$audience != "Executive Summary") '05_appendices.rmd'}
+```
+

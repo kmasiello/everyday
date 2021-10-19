@@ -1,8 +1,0 @@
-# Executive Summary
-<!-- Use this ref.label code chunk to call objects from the analysis for inclusion in the summary -->
-```{r, echo = FALSE}
-```
-
-This report provides an analysis of penguin measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica.  
-
-A total of `r nrow(penguins)` penguins were measured.
