@@ -1,5 +1,5 @@
 ---
-title: "Daily ETL and custom email summary"
+title: "Daily report and custom email summary"
 author: "Katie Masiello"
 date: "8/25/2020"
 output: html_document
