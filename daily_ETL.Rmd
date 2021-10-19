@@ -54,13 +54,13 @@ percent_remaining <- round(days_remaining/365*100)
 # Let's send a daily status email but every two weeks prior to the end of the project, send a larger summary
 
 if(days_remaining%%14 != 0){ #if it's not a multiple of 14 days prior to end date
-  render_connect_email("penguin-email.Rmd") %>% 
+  render_connect_email("penguin-email.Rmd", connect_footer = FALSE) %>% 
   attach_connect_email(subject = paste(days_remaining,
                     "days remain in the project and",
                     nrow(penguins), "penguin measurements are complete"), 
                     attachments = "penguin_measurements.csv")
 } else {
-  render_connect_email("penguin-email-2wk.Rmd") %>% 
+  render_connect_email("penguin-email-2wk.Rmd", connect_footer = FALSE) %>% 
     attach_connect_email(subject = paste0("Bi-weekly summary: Project timeline ", 
                                          percent_remaining,
                                          "% complete, ",
