@@ -1,0 +1,5 @@
+# Appendix A
+
+Penguin measurement guide.
+
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/culmen_depth.png)

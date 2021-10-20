@@ -1,21 +1,21 @@
 ---
-title: "Name of Analysis"
-author: "Your Name"
-date: "The Date"
+title: "Penguin Analysis"
+author: ""
+date: ""
 output:
   html_document:
     toc: yes
     toc_float: yes
     theme: flatly
-subtitle: Data Analysis Group
+subtitle: "An example of parameterized RMD for various levels of report detail"
 params:
   audience:
     label: Audience
-    value: Stakeholder
+    value: All Content
     input: radio
     choices:
     - Executive Summary
-    - Stakeholder
+    - All Content
     - All Content + Code
 resource_files:
 - 01_exec_summary.rmd
@@ -81,7 +81,7 @@ And a plot.
 penguin_plot <- ggplot(penguins, aes(x = island, fill = species)) +
   geom_bar(alpha = 0.8) +
   scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = FALSE) +
+                    guide = "none") +
   theme_minimal() +
   facet_wrap(~species, ncol = 1) +
   coord_flip()
@@ -89,11 +89,10 @@ penguin_plot <- ggplot(penguins, aes(x = island, fill = species)) +
 penguin_plot
 ```
 
-# Results
-Results summary goes here. 
+# Results and Conclusions
+Adelie penguins live on three islands. Chinstrap and Gentoos are more discriminating, living on only one island.   
 
-# Conclusions
-Conclusions go here. 
+
 
 <!-- The section below will appear for all Audiences except Executive Summary -->
 ```{r references, child=if (params$audience != "Executive Summary") '04_references.rmd'}

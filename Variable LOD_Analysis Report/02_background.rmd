@@ -1,0 +1,5 @@
+# Background
+
+Due to heightened interest in penguins - largely attributed to Mr. Popper - funding and research in penguin characterization is en vogue. Meet the Palmer Penguins!
+
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png)

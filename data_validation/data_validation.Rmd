@@ -31,6 +31,11 @@ agent
 ```
 
 ```{r}
+agent %>% email_create()
+```
+
+
+```{r}
 #get extracts as dataframes
 extracts <- get_data_extracts(agent) 
 # extracts_b <- setNames(Map(function(x, y) setNames(data.frame(x), y), 
