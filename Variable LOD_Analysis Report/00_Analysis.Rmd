@@ -52,7 +52,7 @@ library(palmerpenguins)
 
 
 # Assumptions
-List assumptions here to be included in every report, regardless of audience. 
+List assumptions here to be included in every report, regardless of audience.  
 
 1. Assumption 1
 1. Assumption 2
