@@ -1,0 +1,87 @@
+---
+title: "Untitled"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+params:
+  user:
+    label: "Username"
+    input: text
+    value: katie.masiello
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(pins)
+library(leaflet)
+library(ggplot2)
+library(DBI)
+```
+
+
+
+
+```{r get-data}
+con <- dbConnect(odbc::odbc(), "Content DB", timeout = 10)
+
+#explore
+dbListTables(con)
+dbListFields(con, "bike_station_info")
+# "station_id" "name"       "lat"        "lon"
+
+stations <- tbl(con, "bike_station_info")
+```
+
+Let's say we want to make an access table where different users see filtered views of lat and lon records.  First lets define bounds.
+```{r map-data}
+
+leaflet(data = (stations %>% collect())) %>% addTiles() %>%
+ addMarkers(~lon, ~lat, label = ~paste("lat:",lat,"lon:",lon))
+
+```
+
+```{r zones}
+#define 4 zones by rough quadrants on the map
+#would have liked to use median but wasn't working. or make more elegant divisions along county borders.
+
+
+zoned_stations <- stations %>% mutate(zone = case_when(
+  lat >= mean(lat) & lon < mean(lon) ~ 1,
+  lat >= mean(lat) & lon >= mean(lon) ~ 2,
+  lat < mean(lat) & lon >= mean(lon) ~ 3,
+  lat < mean(lat) & lon < mean(lon) ~ 4
+))
+
+```
+
+Define access groups
+```{r}
+board <- board_rsconnect()
+users <- pin_read(board, "katie.masiello/user-info") %>% .$username
+access_table <- tibble( 
+  user = users,
+  zone = sample(c(1:4), length(users), replace = TRUE))
+```
+
+Pin access group for reference
+```{r}
+board %>% pin_write(access_table, description = "user zones")
+```
+
+<!-- Who's the user? -->
+<!-- ```{r} -->
+<!-- username <- params$user -->
+<!-- user_zone <- access_table %>% filter(user == username) %>% pull(zone) -->
+<!-- ``` -->
+
+
+<!-- Now filter the results based on user -->
+<!-- ```{r map-data} -->
+
+<!-- leaflet(data = (zoned_stations %>% filter(zone == user_zone) %>% collect())) %>% addTiles() %>% -->
+<!--  addMarkers(~lon, ~lat, label = ~paste("lat:",lat,"lon:",lon)) -->
+
+<!-- ``` -->
+
+
