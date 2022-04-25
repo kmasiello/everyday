@@ -1,0 +1,5 @@
+default:
+  user: "xu.fei"
+  
+rsconnect:
+  # user: !expr session$user()
