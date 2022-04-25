@@ -1,0 +1,43 @@
+---
+title: "Reticulate to hand off between R and Python"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+ 
+# load reticulate
+library(reticulate)
+
+# OPTIONAL: set up a virtual environment to manage your python packages
+# check if virtual environments exist
+virtualenv_list()
+
+# by default, your python session will use system python. Or you can indicate which virtual environment to use for this project:
+use_virtualenv("my-virtual-environment")
+
+```
+
+R code
+```{r r-data}
+# load data
+df <- mtcars # save to R object
+```
+
+Access R objects from python
+```{python py-data}
+my_python_object = r.df
+
+```
+
+Access python objects from R
+```{r}
+py$my_python_object
+```
+
+Access R objects from python.
+```{python py-data2}
+import pandas
+cars = r.df
+cars = cars[cars['mpg'] <= 20]
+print(cars.head())
+```
