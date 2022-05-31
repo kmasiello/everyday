@@ -6,3 +6,6 @@ R/rsconnect/
 rsconnect/
 .env
 env/
+.*
+*/.*
+!/.gitignore
