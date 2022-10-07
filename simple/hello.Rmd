@@ -8,3 +8,9 @@ output: html_document
 ```
 
 # Hello world!
+
+The time and date is: 
+```{r}
+Sys.time()
+```
+
