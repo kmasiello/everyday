@@ -1,0 +1,11 @@
+{
+    "https://colorado.rstudio.com/rsc/": {
+        "server_url": "https://colorado.rstudio.com/rsc/",
+        "filename": "/usr/home/katie.masiello/everyday/aqi_report_py/AQI_report.ipynb",
+        "app_url": "https://colorado.rstudio.com/rsc/connect/#/apps/97875f7c-fc62-46d6-b6ac-61c4a79200a8",
+        "app_id": 12654,
+        "app_guid": "97875f7c-fc62-46d6-b6ac-61c4a79200a8",
+        "title": "AQI_report",
+        "app_mode": "jupyter-static"
+    }
+}
