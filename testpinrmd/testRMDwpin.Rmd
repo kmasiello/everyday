@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "Katie Masiello"
+date: "2022-10-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(pins)
+board <- board_rsconnect()
+pin_read(board, "randre/faithful_data")
+
+```
+
+```{r}
+Sys.getenv("CONNECT_SERVER")
+Sys.getenv("CONNECT_API_KEY")
+```
+

@@ -1,0 +1,17 @@
+---
+title: "Untitled"
+author: "Katie Masiello"
+date: "2022-11-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(pins)
+board <- board_rsconnect("envvar", server = "https://colorado.rstudio.com/rsc")
+pin_read(board, "katie.masiello/codenames")
+```
+
